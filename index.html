@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>$ARCNOLD | No pain. All chain.</title>
-<meta name="build" content="arcnold-meta-v6">
+<meta name="build" content="arcnold-meta-v7">
 <meta name="description" content="$ARCNOLD on arc. big guy, empty desert road, bending steel for fun. zero utility, max vibes. lfg">
 <link rel="canonical" href="https://arcnold.xyz/">
-<meta name="theme-color" content="#1E1A24">
+<meta name="theme-color" content="#081230">
 <meta name="robots" content="index, follow">
 
 <link rel="icon" type="image/png" href="https://arcnold.xyz/assets/favicon.png?v=4">
@@ -42,23 +42,24 @@
 <style>
 :root{
   --dusk:#1A2340;
-  --asphalt:#1E1A24;
-  --asphalt-2:#2A2531;
+  --asphalt:#081230;
+  --asphalt-2:#0E1C45;
   --sunset:#F2994A;
   --gold:#FFC857;
   --steel:#9AA4B2;
-  --sand:#E8CFA8;
-  --ink:#F6EEE3;
-  --muted:#C9BBA8;
-  --glass:rgba(255,244,228,.07);
-  --glass-line:rgba(255,236,210,.16);
+  --sand:#FFE3A6;
+  --ink:#EEF4FF;
+  --muted:#A9BCE0;
+  --glass:rgba(160,195,255,.08);
+  --arc:#3D7BFF;
+  --glass-line:rgba(150,190,255,.2);
   --display:"Big Shoulders Stencil Display","Big Shoulders Stencil",Impact,"Arial Black",sans-serif;
   --body:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --max:1180px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{overflow-x:hidden;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:var(--asphalt);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;overflow-x:hidden}
+body{background:radial-gradient(1200px 700px at 85% -5%,rgba(61,123,255,.35),transparent 60%),radial-gradient(900px 600px at -10% 40%,rgba(40,90,220,.25),transparent 60%),radial-gradient(1000px 700px at 110% 90%,rgba(61,123,255,.2),transparent 60%),var(--asphalt);background-attachment:fixed;color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;overflow-x:hidden}
 img,video,canvas,svg{display:block;max-width:100%}
 a{color:inherit}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
@@ -67,8 +68,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* NAV */
-.nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:50;width:min(var(--max),100% - 24px);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 8px 8px 16px;border-radius:999px;background:rgba(30,26,36,.45);border:1px solid var(--glass-line);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);transition:background .3s}
-.nav.solid{background:rgba(30,26,36,.82)}
+.nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:50;width:min(var(--max),100% - 24px);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 8px 8px 16px;border-radius:999px;background:rgba(8,18,48,.5);border:1px solid var(--glass-line);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);transition:background .3s}
+.nav.solid{background:rgba(8,18,48,.85)}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:900;font-size:24px;letter-spacing:.02em}
 .brand img{width:32px;height:32px;object-fit:contain}
 .nav-links{display:flex;gap:4px;list-style:none}
@@ -79,7 +80,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .btn-gold{background:linear-gradient(180deg,#FFD77A,var(--gold) 50%,#E9A93A);color:#2A1C08;box-shadow:0 6px 24px -6px rgba(255,200,87,.6),inset 0 1px 0 rgba(255,255,255,.5)}
 .btn-gold:hover{box-shadow:0 10px 34px -6px rgba(255,200,87,.85),inset 0 1px 0 rgba(255,255,255,.5)}
 .btn-glass{background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.btn-glass:hover{background:rgba(255,244,228,.14)}
+.btn-glass:hover{background:rgba(160,195,255,.16)}
 .nav .btn{padding:10px 18px;font-size:15px}
 .burger{display:none;width:44px;height:44px;border-radius:999px;background:var(--glass);border:1px solid var(--glass-line)}
 .burger span{display:block;width:18px;height:2px;background:var(--ink);margin:4px auto;transition:transform .25s,opacity .25s}
@@ -89,7 +90,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* HERO: the video carries the title, controls sit below it */
 .hero{position:relative;background:var(--asphalt);padding-top:92px}
-.hero-media{position:relative;width:min(var(--max),100% - 40px,(100svh - 200px) * 1.75);margin-inline:auto;aspect-ratio:1344/768;border-radius:24px;border:1px solid var(--glass-line);overflow:hidden;box-shadow:0 30px 80px -30px rgba(242,153,74,.35);background:radial-gradient(circle at 30% 80%,rgba(255,200,87,.55),transparent 40%),linear-gradient(180deg,#1A2340 0%,#6A4A6E 50%,#E27D4A 85%,#1E1A24 100%)}
+.hero-media{position:relative;width:min(var(--max),100% - 40px,(100svh - 200px) * 1.75);margin-inline:auto;aspect-ratio:1344/768;border-radius:24px;border:1px solid var(--glass-line);overflow:hidden;box-shadow:0 30px 90px -25px rgba(61,123,255,.55);background:radial-gradient(circle at 30% 80%,rgba(255,200,87,.55),transparent 40%),linear-gradient(180deg,#1A2340 0%,#6A4A6E 50%,#E27D4A 85%,#081230 100%)}
 #heroVideo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s}
 #heroVideo.on{opacity:1}
 .hero-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;padding:22px 0 64px;position:relative;z-index:1}
@@ -98,7 +99,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .ca{margin-top:22px;display:inline-flex;align-items:center;gap:12px;padding:6px 6px 6px 16px;border-radius:999px;background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);max-width:100%}
 .ca b{font-size:13px;color:var(--gold);letter-spacing:.06em}
 .ca code{font-family:var(--body);font-size:15px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.ca button{padding:8px 14px;border-radius:999px;background:rgba(255,244,228,.1);font-size:14px;font-weight:700}
+.ca button{padding:8px 14px;border-radius:999px;background:rgba(160,195,255,.12);font-size:14px;font-weight:700}
 .ca button[disabled]{opacity:.45;cursor:not-allowed}
 
 /* MARQUEE */
@@ -120,18 +121,18 @@ h2{font-family:var(--display);font-weight:900;font-size:clamp(52px,8vw,104px);li
 /* STORY */
 .story-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:end}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:60px}
-.spot{position:relative;padding:30px 26px 32px;border-radius:22px;background:linear-gradient(180deg,rgba(255,244,228,.06),rgba(255,244,228,.02));border:1px solid var(--glass-line);overflow:hidden}
-.spot::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,200,87,.18),transparent 45%);opacity:0;transition:opacity .3s;pointer-events:none}
+.spot{position:relative;padding:30px 26px 32px;border-radius:22px;background:linear-gradient(180deg,rgba(120,165,255,.10),rgba(120,165,255,.03));border:1px solid var(--glass-line);overflow:hidden}
+.spot::before{content:"";position:absolute;inset:0;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(61,123,255,.28),transparent 45%);opacity:0;transition:opacity .3s;pointer-events:none}
 .spot:hover::before{opacity:1}
 .spot h3{font-family:var(--display);font-weight:900;font-size:36px;line-height:1;text-transform:uppercase;margin-bottom:12px}
 .spot p{color:var(--muted);font-size:16px}
 .spot svg{width:44px;height:44px;margin-bottom:22px}
 
 /* NUMBERS */
-.numbers{background:linear-gradient(180deg,var(--asphalt),var(--asphalt-2))}
-.stat-row{display:grid;grid-template-columns:repeat(3,1fr);margin-top:50px;border-top:2px solid rgba(255,236,210,.14)}
+.numbers{background:linear-gradient(180deg,transparent,rgba(14,28,69,.8) 40%,transparent)}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);margin-top:50px;border-top:2px solid rgba(150,190,255,.18)}
 .stat{padding:34px 20px 10px 0}
-.stat+.stat{padding-left:28px;border-left:2px solid rgba(255,236,210,.14)}
+.stat+.stat{padding-left:28px;border-left:2px solid rgba(150,190,255,.18)}
 .stat .num{font-family:var(--display);font-weight:900;font-size:clamp(54px,7.5vw,96px);line-height:1;color:var(--gold)}
 .stat .lab{font-size:16px;color:var(--muted);margin-top:8px}
 .note{margin-top:34px;font-size:15px;color:var(--muted)}
@@ -152,18 +153,20 @@ h2{font-family:var(--display);font-weight:900;font-size:clamp(52px,8vw,104px);li
 .steps li::before{content:counter(s);display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--gold);color:#2A1C08;font-family:var(--display);font-weight:900;font-size:26px;margin-bottom:20px}
 .steps h3{font-size:20px;font-weight:800;margin-bottom:8px}
 .steps p{font-size:15px;color:var(--muted)}
+.ca-big{margin-top:40px;display:flex;max-width:720px}
+.ca-big code{flex:1;font-size:16px;color:var(--ink)}
 .warn{margin-top:28px;padding:16px 20px;border-radius:14px;border:1px dashed rgba(255,200,87,.5);color:var(--sand);font-size:15px;max-width:720px}
 
 /* POSTERS */
 .posters{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
-.poster{position:relative;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:#241F2B;border:1px solid var(--glass-line);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.poster{position:relative;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:#0E1C45;border:1px solid var(--glass-line);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
 .poster:hover{transform:translateY(-6px) rotate(-.4deg)}
 .poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .poster .fallback{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;background:radial-gradient(circle at 70% 85%,rgba(255,200,87,.9),rgba(242,153,74,.6) 18%,transparent 45%),linear-gradient(180deg,#27315A 0%,#8A4B5C 55%,#F2994A 85%)}
 .poster .fallback strong{font-family:var(--display);font-weight:900;font-size:clamp(40px,5vw,62px);line-height:.85;color:#1E1A24;text-transform:uppercase}
 .poster .fallback em{font-style:normal;font-weight:800;font-size:14px;letter-spacing:.1em;color:#1E1A24;margin-top:8px;text-transform:uppercase}
 .poster.has-img .fallback{display:none}
-.poster.has-img{cursor:zoom-in;aspect-ratio:16/9;background:#15121A}
+.poster.has-img{cursor:zoom-in;aspect-ratio:16/9;background:#060E26}
 .poster.has-img::before{content:"";position:absolute;inset:-30px;background-image:var(--bg);background-size:cover;background-position:center;filter:blur(26px) brightness(.55)}
 .poster.has-img img{object-fit:contain;z-index:1}
 .lightbox{position:fixed;inset:0;z-index:100;background:rgba(15,12,18,.9);display:none;place-items:center;padding:20px;backdrop-filter:blur(8px)}
@@ -182,11 +185,11 @@ h2{font-family:var(--display);font-weight:900;font-size:clamp(52px,8vw,104px);li
 .phase li{padding:3px 0}
 
 /* COMMUNITY */
-.join{text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 120%,rgba(242,153,74,.45),transparent 60%)}
+.join{text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 120%,rgba(61,123,255,.5),transparent 60%)}
 .join h2{font-size:clamp(64px,12vw,170px)}
 .join .hero-actions{justify-content:center}
 
-footer{padding:40px 0 60px;border-top:1px solid rgba(255,236,210,.1);color:var(--muted);font-size:14px}
+footer{padding:40px 0 60px;border-top:1px solid rgba(150,190,255,.14);color:var(--muted);font-size:14px}
 footer .wrap{display:grid;gap:18px}
 footer .brand{font-size:22px;color:var(--ink)}
 footer p{max-width:80ch}
@@ -198,7 +201,7 @@ canvas#sparks{position:fixed;inset:0;pointer-events:none;z-index:90}
 
 
 @media (max-width:960px){
-  .nav-links{position:absolute;top:calc(100% + 8px);left:0;right:0;flex-direction:column;padding:10px;border-radius:24px;background:rgba(30,26,36,.95);border:1px solid var(--glass-line);display:none}
+  .nav-links{position:absolute;top:calc(100% + 8px);left:0;right:0;flex-direction:column;padding:10px;border-radius:24px;background:rgba(8,18,48,.96);border:1px solid var(--glass-line);display:none}
   .nav.open .nav-links{display:flex}
   .nav-links a{padding:14px 16px;font-size:17px}
   .burger{display:block}
@@ -220,7 +223,7 @@ canvas#sparks{position:fixed;inset:0;pointer-events:none;z-index:90}
   .hero-bar .hero-actions{margin-top:14px;width:100%}
   .cards,.steps,.posters,.road{grid-template-columns:1fr}
   .stat-row{grid-template-columns:1fr}
-  .stat,.stat+.stat{padding:24px 0;border-left:0;border-bottom:2px solid rgba(255,236,210,.14)}
+  .stat,.stat+.stat{padding:24px 0;border-left:0;border-bottom:2px solid rgba(150,190,255,.18)}
   .marquee p{font-size:24px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -254,8 +257,8 @@ canvas#sparks{position:fixed;inset:0;pointer-events:none;z-index:90}
   <div class="wrap hero-bar">
     <div class="ca" id="caBox">
       <b>CA</b>
-      <code id="caText">soon ser</code>
-      <button id="caCopy" disabled>Copy</button>
+      <code id="caText">0x71974347D2958c9f1e5cfaA2D998ef9BcBD1B021</code>
+      <button id="caCopy" class="ca-copy" disabled>Copy</button>
     </div>
     <div class="hero-actions">
       <a class="btn btn-gold" id="buyBtn" href="#buy">How to ape</a>
@@ -340,8 +343,9 @@ canvas#sparks{position:fixed;inset:0;pointer-events:none;z-index:90}
       <li class="reveal"><h3>get a wallet</h3><p>metamask or rabby, both fine. seed phrase goes on paper, not in your camera roll. we're begging you.</p></li>
       <li class="reveal"><h3>add arc</h3><p>add the arc network in your wallet or you're just staring at nothing.</p></li>
       <li class="reveal"><h3>grab some usdc</h3><p>gas on arc is paid in usdc, so bridge a little over first. don't be the guy stuck with 0 gas.</p></li>
-      <li class="reveal"><h3>ape $ARCNOLD</h3><p>when we launch, copy the CA from this page, paste it into a dex on arc, swap. welcome to the gym.</p></li>
+      <li class="reveal"><h3>ape $ARCNOLD</h3><p>copy the CA below, paste it into a dex on arc, swap. welcome to the gym.</p></li>
     </ol>
+    <div class="ca ca-big reveal"><b>CA</b><code class="ca-full">0x71974347D2958c9f1e5cfaA2D998ef9BcBD1B021</code><button class="ca-copy">Copy</button></div>
     <p class="warn reveal">real talk: the only legit CA is the one on this site and on @arcnoldarc. anyone sliding into your DMs with a CA is a scammer. every. single. time.</p>
   </div>
 </section>
@@ -392,7 +396,7 @@ canvas#sparks{position:fixed;inset:0;pointer-events:none;z-index:90}
 <script>
 /* Settings: fill these in on launch day */
 const CONFIG = {
-  ca: "",
+  ca: "0x71974347D2958c9f1e5cfaA2D998ef9BcBD1B021",
   x: "https://x.com/arcnoldarc",
   buyUrl: ""
 };
@@ -415,15 +419,17 @@ document.getElementById("year").textContent = new Date().getFullYear();
 /* Links and CA */
 document.querySelectorAll("[data-link]").forEach(a => { a.href = CONFIG[a.dataset.link] || "#"; });
 if (CONFIG.ca) {
-  $("#caText").textContent = CONFIG.ca.slice(0,6) + "..." + CONFIG.ca.slice(-4);
+  const setCa = () => { $("#caText").textContent = innerWidth < 700 ? CONFIG.ca.slice(0,8) + "..." + CONFIG.ca.slice(-6) : CONFIG.ca; };
+  setCa(); addEventListener("resize", setCa);
+  document.querySelectorAll(".ca-full").forEach(c => c.textContent = CONFIG.ca);
   $("#caCopy").disabled = false;
   if (CONFIG.buyUrl) { const b = $("#buyBtn"); b.href = CONFIG.buyUrl; b.target = "_blank"; b.rel = "noopener"; b.textContent = "Buy $ARCNOLD"; }
 }
 function toast(t){ const el=$("#toast"); el.textContent=t; el.classList.add("on"); clearTimeout(toast.t); toast.t=setTimeout(()=>el.classList.remove("on"),1600); }
-$("#caCopy").addEventListener("click", async () => {
+document.querySelectorAll(".ca-copy").forEach(btn => btn.addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(CONFIG.ca); toast("CA copied, lfg"); }
   catch(e) { toast("Copy failed, select the address manually"); }
-});
+}));
 
 /* Nav */
 const nav = $("#nav"), burger = $("#burger");
