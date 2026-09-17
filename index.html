@@ -4,13 +4,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>$ARCNOLD | No pain. All chain.</title>
-<!-- build 2026-09-17c -->
-<meta name="description" content="$ARCNOLD is a meme coin on Arc. No utility. Heavy lifts only.">
+<meta name="description" content="$ARCNOLD is a meme coin on Arc. No utility. No promises. Heavy lifts only.">
+<link rel="canonical" href="https://arcnold.xyz/">
 <meta name="theme-color" content="#1E1A24">
-<meta property="og:title" content="$ARCNOLD">
-<meta property="og:description" content="No pain. All chain. A meme coin on Arc.">
-<meta property="og:url" content="https://arcnold.xyz">
-<link rel="icon" id="favicon" href="assets/mark.svg" type="image/svg+xml">
+<meta name="robots" content="index, follow">
+
+<link rel="icon" type="image/png" sizes="512x512" href="https://arcnold.xyz/assets/mark.png?v=2">
+<link rel="shortcut icon" href="https://arcnold.xyz/assets/mark.png?v=2">
+<link rel="apple-touch-icon" href="https://arcnold.xyz/assets/mark.png?v=2">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="$ARCNOLD">
+<meta property="og:url" content="https://arcnold.xyz/">
+<meta property="og:title" content="$ARCNOLD | No pain. All chain.">
+<meta property="og:description" content="A meme coin on Arc. No utility. No promises. Heavy lifts only.">
+<meta property="og:image" content="https://arcnold.xyz/assets/og.jpg?v=2">
+<meta property="og:image:secure_url" content="https://arcnold.xyz/assets/og.jpg?v=2">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="$ARCNOLD, a meme coin on Arc">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@arcnoldarc">
+<meta name="twitter:creator" content="@arcnoldarc">
+<meta name="twitter:title" content="$ARCNOLD | No pain. All chain.">
+<meta name="twitter:description" content="A meme coin on Arc. No utility. No promises. Heavy lifts only.">
+<meta name="twitter:image" content="https://arcnold.xyz/assets/og.jpg?v=2">
+<meta name="twitter:image:alt" content="$ARCNOLD, a meme coin on Arc">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@700;900&display=swap">
@@ -139,7 +162,9 @@ h2{font-family:var(--display);font-weight:900;font-size:clamp(52px,8vw,104px);li
 .poster .fallback strong{font-family:var(--display);font-weight:900;font-size:clamp(40px,5vw,62px);line-height:.85;color:#1E1A24;text-transform:uppercase}
 .poster .fallback em{font-style:normal;font-weight:800;font-size:14px;letter-spacing:.1em;color:#1E1A24;margin-top:8px;text-transform:uppercase}
 .poster.has-img .fallback{display:none}
-.poster.has-img{cursor:zoom-in}
+.poster.has-img{cursor:zoom-in;aspect-ratio:16/9;background:#15121A}
+.poster.has-img::before{content:"";position:absolute;inset:-30px;background-image:var(--bg);background-size:cover;background-position:center;filter:blur(26px) brightness(.55)}
+.poster.has-img img{object-fit:contain;z-index:1}
 .lightbox{position:fixed;inset:0;z-index:100;background:rgba(15,12,18,.9);display:none;place-items:center;padding:20px;backdrop-filter:blur(8px)}
 .lightbox.on{display:grid}
 .lightbox img{max-height:90svh;border-radius:14px}
@@ -206,7 +231,7 @@ canvas#sparks{position:fixed;inset:0;pointer-events:none;z-index:90}
 <body>
 
 <nav class="nav" id="nav" aria-label="Main">
-  <a class="brand" href="#top"><img class="logo" src="assets/mark.svg" alt="">$ARCNOLD</a>
+  <a class="brand" href="#top"><img class="logo" src="assets/mark.png" alt="" onerror="this.onerror=null;this.src='assets/mark.svg'">$ARCNOLD</a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#story">Story</a></li>
     <li><a href="#numbers">Tokenomics</a></li>
@@ -353,7 +378,7 @@ canvas#sparks{position:fixed;inset:0;pointer-events:none;z-index:90}
 
 <footer>
   <div class="wrap">
-    <a class="brand" href="#top"><img class="logo" src="assets/mark.svg" alt="">$ARCNOLD</a>
+    <a class="brand" href="#top"><img class="logo" src="assets/mark.png" alt="" onerror="this.onerror=null;this.src='assets/mark.svg'">$ARCNOLD</a>
     <p>$ARCNOLD is a meme coin with no intrinsic value and no expectation of financial return. There is no team promise, no utility and no roadmap beyond memes. It is not affiliated with Circle, the Arc network or any real person. Nothing on this site is financial advice. Crypto is risky, so only use money you can afford to lose.</p>
     <p>&copy; <span id="year"></span> arcnold.xyz</p>
   </div>
@@ -384,15 +409,7 @@ const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const $ = s => document.querySelector(s);
 document.getElementById("year").textContent = new Date().getFullYear();
 
-/* Logo: uses assets/mark.png if it exists, otherwise mark.svg */
-(function(){
-  const t = new Image();
-  t.onload = () => {
-    document.querySelectorAll("img.logo").forEach(i => { i.src = "assets/mark.png"; });
-    const f = document.getElementById("favicon"); f.type = "image/png"; f.href = "assets/mark.png";
-  };
-  t.src = "assets/mark.png?v=" + Date.now();
-})();
+
 
 /* Links and CA */
 document.querySelectorAll("[data-link]").forEach(a => { a.href = CONFIG[a.dataset.link] || "#"; });
@@ -524,7 +541,7 @@ addEventListener("pointerdown", e => spark(e.clientX, e.clientY));
     const exts = ["png","jpg","jpeg","webp","PNG","JPG","JPEG"];
     const tries = [...exts.map(e => base + "." + e), ...exts.map(e => cap + "." + e)];
     let k = 0;
-    img.onload = () => { fig.prepend(img); fig.classList.add("has-img"); };
+    img.onload = () => { fig.prepend(img); fig.style.setProperty("--bg", `url("${img.src}")`); fig.classList.add("has-img"); };
     img.onerror = () => { k++; if (k < tries.length) img.src = tries[k]; else { fig.remove(); if (!grid.children.length){ $("#posters").style.display = "none"; $("#navPosters").style.display = "none"; } } };
     img.src = tries[0];
     fig.addEventListener("click", () => { if (!fig.classList.contains("has-img")) return; lbi.src = img.src; lbi.alt = img.alt; lb.classList.add("on"); });
