@@ -368,7 +368,7 @@ canvas#sparks{position:fixed;inset:0;pointer-events:none;z-index:90}
 /* Settings: fill these in on launch day */
 const CONFIG = {
   ca: "",
-  x: "https://x.com/",
+  x: "https://x.com/arcnoldarc",
   telegram: "https://t.me/",
   buyUrl: ""
 };
@@ -520,10 +520,14 @@ addEventListener("pointerdown", e => spark(e.clientX, e.clientY));
   POSTERS.forEach(p => {
     const fig = document.createElement("figure"); fig.className = "poster";
     fig.innerHTML = `<div class="fallback"><strong>${p.title}</strong><em>${p.line}</em></div>`;
-    const img = new Image(); img.alt = "$ARCNOLD poster: " + p.line; img.loading = "lazy"; img.decoding = "async";
+    const img = new Image(); img.alt = "$ARCNOLD poster: " + p.line; img.decoding = "async";
+    const base = p.file.replace(/\.[a-z]+$/i, "");
+    const tries = ["jpg","png","jpeg","webp","JPG","PNG","JPEG"].map(e => base + "." + e);
+    let k = 0;
     img.onload = () => { fig.prepend(img); fig.classList.add("has-img"); };
-    img.src = p.file;
-    fig.addEventListener("click", () => { if (!fig.classList.contains("has-img")) return; lbi.src = p.file; lbi.alt = img.alt; lb.classList.add("on"); });
+    img.onerror = () => { k++; if (k < tries.length) img.src = tries[k]; };
+    img.src = tries[0];
+    fig.addEventListener("click", () => { if (!fig.classList.contains("has-img")) return; lbi.src = img.src; lbi.alt = img.alt; lb.classList.add("on"); });
     grid.appendChild(fig);
   });
   lb.addEventListener("click", () => lb.classList.remove("on"));
