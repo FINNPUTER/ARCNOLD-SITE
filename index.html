@@ -192,6 +192,28 @@ canvas#sparks{position:fixed;inset:0;pointer-events:none;z-index:90}
 .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);opacity:0;z-index:95;padding:12px 20px;border-radius:999px;background:var(--gold);color:#2A1C08;font-weight:800;transition:all .3s}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
+
+/* Hero with video: the video carries the title */
+.hero.checking .title{visibility:hidden}
+.hero.has-video .title,.hero.has-video #scene,.hero.has-video .aurora,.hero.has-video .hero-inner::before{display:none}
+.hero.has-video{align-items:flex-end}
+.hero.has-video .hero-shade{background:linear-gradient(0deg,var(--asphalt) 0%,rgba(30,26,36,.7) 16%,transparent 38%)}
+.hero.has-video .hero-inner{padding:0 0 64px;display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.hero.has-video .tagline{flex-basis:100%;margin:0 0 4px}
+.hero.has-video .ca,.hero.has-video .hero-actions{margin-top:0}
+.hero.has-video .tagline{font-size:clamp(24px,2.6vw,34px)}
+.hero.has-video .scroll-hint{display:none}
+@media (max-aspect-ratio:13/10){
+  .hero.has-video{display:block;min-height:0;padding-top:84px}
+  .hero.has-video #heroVideo{position:relative;inset:auto;z-index:0;height:auto;aspect-ratio:1344/768;-webkit-mask-image:linear-gradient(180deg,#000 80%,transparent);mask-image:linear-gradient(180deg,#000 80%,transparent)}
+  .hero.has-video .hero-shade{display:none}
+  .hero.has-video .hero-inner{display:block;padding:18px 0 70px}
+  .hero.has-video .tagline{font-size:clamp(24px,6.5vw,34px);margin-top:0}
+  .hero.has-video .ca{display:flex;width:100%;margin-top:18px}
+  .hero.has-video .ca code{flex:1}
+  .hero.has-video .hero-actions{margin-top:18px}
+}
+
 @media (max-width:960px){
   .nav-links{position:absolute;top:calc(100% + 8px);left:0;right:0;flex-direction:column;padding:10px;border-radius:24px;background:rgba(30,26,36,.95);border:1px solid var(--glass-line);display:none}
   .nav.open .nav-links{display:flex}
@@ -238,7 +260,7 @@ canvas#sparks{position:fixed;inset:0;pointer-events:none;z-index:90}
   <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
 </nav>
 
-<header class="hero" id="top">
+<header class="hero checking" id="top">
   <canvas id="scene" aria-hidden="true"></canvas>
   <video id="heroVideo" muted loop playsinline preload="metadata" aria-hidden="true">
     <source src="assets/hero.mp4" type="video/mp4">
@@ -458,7 +480,6 @@ addEventListener("scroll", () => nav.classList.toggle("solid", scrollY > 40), {p
   for (let i=0;i<500;i++){ g.fillRect(Math.random()*420, Math.random()*420, Math.random()*2.2, Math.random()*2.2); }
   document.documentElement.style.setProperty("--cracks", `url(${c.toDataURL()})`);
   document.querySelectorAll(".title .ch").forEach((ch,i) => { ch.style.animationDelay = (0.15 + i*0.08) + "s"; });
-  if (!reduce) setTimeout(() => { $("#top").classList.add("shake"); }, 150 + 7*80 + 350);
 })();
 
 /* Rotating tagline */
@@ -477,8 +498,19 @@ addEventListener("scroll", () => nav.classList.toggle("solid", scrollY > 40), {p
 
 /* Hero video slot: shows only if assets/hero.mp4 exists */
 (function(){
-  const v = $("#heroVideo");
-  v.addEventListener("loadeddata", () => { v.classList.add("on"); if (!reduce) v.play().catch(()=>{}); });
+  const v = $("#heroVideo"), hero = $("#top"), src = v.querySelector("source");
+  const noVideo = () => {
+    if (hero.classList.contains("has-video") || !hero.classList.contains("checking")) return;
+    hero.classList.remove("checking");
+    if (!reduce){ hero.classList.remove("shake"); void hero.offsetWidth; hero.classList.add("shake"); }
+  };
+  v.addEventListener("loadedmetadata", () => {
+    hero.classList.remove("checking"); hero.classList.add("has-video"); v.classList.add("on");
+    v.play().catch(()=>{});
+  });
+  src.addEventListener("error", noVideo);
+  v.addEventListener("error", noVideo);
+  setTimeout(noVideo, 2500);
   v.load();
 })();
 
@@ -538,7 +570,7 @@ addEventListener("scroll", () => nav.classList.toggle("solid", scrollY > 40), {p
     rocks.forEach(r => { r.y += r.vy; r.x += r.vx; r.vy += .03; r.r += r.vr;
       g.save(); g.translate(r.x,r.y); g.rotate(r.r); g.beginPath(); g.moveTo(-r.s,-r.s*.6); g.lineTo(r.s*.7,-r.s); g.lineTo(r.s,r.s*.5); g.lineTo(-r.s*.4,r.s); g.closePath(); g.fill(); g.restore(); });
   }
-  function loop(){ if (running){ t++; draw(); } requestAnimationFrame(loop); }
+  function loop(){ if ($("#top").classList.contains("has-video")) return; if (running){ t++; draw(); } requestAnimationFrame(loop); }
   addEventListener("resize", resize);
   addEventListener("pointermove", e => { mx = (e.clientX / innerWidth - .5) * 2; }, {passive:true});
   new IntersectionObserver(([en]) => { running = en.isIntersecting; }).observe(cv);
