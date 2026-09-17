@@ -210,7 +210,7 @@ canvas#sparks{position:fixed;inset:0;pointer-events:none;z-index:90}
     <li><a href="#story">Story</a></li>
     <li><a href="#numbers">Tokenomics</a></li>
     <li><a href="#buy">How to buy</a></li>
-    <li><a href="#posters">Posters</a></li>
+    <li id="navPosters"><a href="#posters">Posters</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
   </ul>
   <a class="btn btn-gold" data-link="x" href="#" target="_blank" rel="noopener">Follow on X</a>
@@ -522,10 +522,12 @@ addEventListener("pointerdown", e => spark(e.clientX, e.clientY));
     fig.innerHTML = `<div class="fallback"><strong>${p.title}</strong><em>${p.line}</em></div>`;
     const img = new Image(); img.alt = "$ARCNOLD poster: " + p.line; img.decoding = "async";
     const base = p.file.replace(/\.[a-z]+$/i, "");
-    const tries = ["jpg","png","jpeg","webp","JPG","PNG","JPEG"].map(e => base + "." + e);
+    const cap = base.replace(/\/poster-/, "/Poster-");
+    const exts = ["png","jpg","jpeg","webp","PNG","JPG","JPEG"];
+    const tries = [...exts.map(e => base + "." + e), ...exts.map(e => cap + "." + e)];
     let k = 0;
     img.onload = () => { fig.prepend(img); fig.classList.add("has-img"); };
-    img.onerror = () => { k++; if (k < tries.length) img.src = tries[k]; };
+    img.onerror = () => { k++; if (k < tries.length) img.src = tries[k]; else { fig.remove(); if (!grid.children.length){ $("#posters").style.display = "none"; $("#navPosters").style.display = "none"; } } };
     img.src = tries[0];
     fig.addEventListener("click", () => { if (!fig.classList.contains("has-img")) return; lbi.src = img.src; lbi.alt = img.alt; lb.classList.add("on"); });
     grid.appendChild(fig);
