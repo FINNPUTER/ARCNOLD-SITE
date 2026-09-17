@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>$ARCNOLD | No pain. All chain.</title>
-<meta name="build" content="arcnold-meta-v7">
-<meta name="description" content="$ARCNOLD on arc. big guy, empty desert road, bending steel for fun. zero utility, max vibes. lfg">
+<meta name="build" content="arcnold-meta-v10">
+<meta name="description" content="$ARCNOLD on arc. big guy, empty desert road, bending steel for fun. 3% tax, 60% of it back to holders. lfg">
 <link rel="canonical" href="https://arcnold.xyz/">
 <meta name="theme-color" content="#081230">
 <meta name="robots" content="index, follow">
@@ -18,7 +18,7 @@
 <meta property="og:site_name" content="$ARCNOLD">
 <meta property="og:url" content="https://arcnold.xyz/">
 <meta property="og:title" content="$ARCNOLD | No pain. All chain.">
-<meta property="og:description" content="big guy bending blocks on arc. zero utility, max vibes. follow @arcnoldarc before it sends">
+<meta property="og:description" content="big guy bending blocks on arc. 3% tax, 60% of it paid back to holders. follow @arcnoldarc before it sends">
 <meta property="og:image" content="https://arcnold.xyz/assets/og.png?v=3">
 <meta property="og:image:secure_url" content="https://arcnold.xyz/assets/og.png?v=3">
 <meta property="og:image:type" content="image/png">
@@ -31,7 +31,7 @@
 <meta name="twitter:site" content="@arcnoldarc">
 <meta name="twitter:creator" content="@arcnoldarc">
 <meta name="twitter:title" content="$ARCNOLD | No pain. All chain.">
-<meta name="twitter:description" content="big guy bending blocks on arc. zero utility, max vibes. follow @arcnoldarc before it sends">
+<meta name="twitter:description" content="big guy bending blocks on arc. 3% tax, 60% of it paid back to holders. follow @arcnoldarc before it sends">
 <meta name="twitter:image" content="https://arcnold.xyz/assets/og.png?v=3">
 <meta name="twitter:image:alt" content="$ARCNOLD, a meme coin on Arc">
 
@@ -129,6 +129,14 @@ h2{font-family:var(--display);font-weight:900;font-size:clamp(52px,8vw,104px);li
 .spot svg{width:44px;height:44px;margin-bottom:22px}
 
 /* NUMBERS */
+.split-title{font-family:var(--display);font-weight:900;font-size:clamp(30px,4vw,46px);text-transform:uppercase;margin-top:64px}
+.split{display:flex;gap:4px;margin-top:20px;height:22px;border-radius:999px;overflow:hidden;background:rgba(150,190,255,.12)}
+.split span{width:0;background:var(--c);border-radius:999px;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.split.seen span{width:var(--w)}
+.split-legend{list-style:none;display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:18px;font-size:16px;color:var(--muted)}
+.split-legend li{display:flex;align-items:center;gap:9px}
+.split-legend i{width:12px;height:12px;border-radius:50%}
+.split-legend b{color:var(--ink)}
 .numbers{background:linear-gradient(180deg,transparent,rgba(14,28,69,.8) 40%,transparent)}
 .stat-row{display:grid;grid-template-columns:repeat(3,1fr);margin-top:50px;border-top:2px solid rgba(150,190,255,.18)}
 .stat{padding:34px 20px 10px 0}
@@ -261,7 +269,8 @@ canvas#sparks{position:fixed;inset:0;pointer-events:none;z-index:90}
       <button id="caCopy" class="ca-copy" disabled>Copy</button>
     </div>
     <div class="hero-actions">
-      <a class="btn btn-gold" id="buyBtn" href="#buy">How to ape</a>
+      <a class="btn btn-gold" id="buyBtn" data-link="buy" href="https://dexscreener.com/arc/0x71974347d2958c9f1e5cfaa2d998ef9bcbd1b021" target="_blank" rel="noopener">Buy $ARCNOLD</a>
+      <a class="btn btn-glass" data-link="dex" href="https://dexscreener.com/arc/0x71974347d2958c9f1e5cfaa2d998ef9bcbd1b021" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l5-5 4 4 8-8"/><path d="M14 8h6v6"/></svg>Dexscreener</a>
     </div>
   </div>
 </header>
@@ -283,8 +292,8 @@ canvas#sparks{position:fixed;inset:0;pointer-events:none;z-index:90}
     <div class="cards">
       <article class="spot reveal">
         <svg viewBox="0 0 48 48" fill="none" stroke="#FFC857" stroke-width="4"><circle cx="24" cy="24" r="18"/><path d="M11 37 37 11"/></svg>
-        <h3>zero utility</h3>
-        <p>can't stake it, can't farm it. you ape in because the posters are funny. ngl that's more honest than half the coins on your watchlist.</p>
+        <h3>3% tax, that's all</h3>
+        <p>nothing to stake, nothing to farm. 3% tax does the work in the background and 60% of it lands back in holder wallets. you're here for the posters anyway.</p>
       </article>
       <article class="spot reveal">
         <svg viewBox="0 0 48 48" fill="none" stroke="#FFC857" stroke-width="4"><path d="M6 36 Q24 4 42 36"/><path d="M2 36h10M36 36h10"/></svg>
@@ -304,11 +313,25 @@ canvas#sparks{position:fixed;inset:0;pointer-events:none;z-index:90}
   <div class="wrap">
     <h2 class="reveal">what's on the bar</h2>
     <div class="stat-row">
+      <div class="stat reveal"><div class="num" data-count="3" data-suffix="%">0%</div><div class="lab">tax on buys and sells</div></div>
       <div class="stat reveal"><div class="num" data-count="1000000000" data-format="short">0</div><div class="lab">supply</div></div>
-      <div class="stat reveal"><div class="num" data-count="0" data-suffix="%">0%</div><div class="lab">tax. none. fr</div></div>
-      <div class="stat reveal"><div class="num" data-count="100" data-suffix="%">0%</div><div class="lab">pure meme</div></div>
+      <div class="stat reveal"><div class="num" data-count="60" data-suffix="%">0%</div><div class="lab">of tax back to holders</div></div>
     </div>
-    <p class="note reveal">placeholder numbers for now. real ones drop the second the CA is live. don't @ us.</p>
+
+    <h3 class="split-title reveal">where the 3% goes</h3>
+    <div class="split reveal" id="taxSplit" role="img" aria-label="3 percent tax split: dividends 60 percent, creator funds 20 percent, buyback and burn 10 percent, liquidity 10 percent">
+      <span style="--w:60%;--c:var(--gold)"></span>
+      <span style="--w:20%;--c:var(--arc)"></span>
+      <span style="--w:10%;--c:#FF7A45"></span>
+      <span style="--w:10%;--c:#3FD6C0"></span>
+    </div>
+    <ul class="split-legend reveal">
+      <li><i style="background:var(--gold)"></i>dividends <b>60%</b></li>
+      <li><i style="background:var(--arc)"></i>creator funds <b>20%</b></li>
+      <li><i style="background:#FF7A45"></i>buyback and burn <b>10%</b></li>
+      <li><i style="background:#3FD6C0"></i>liquidity <b>10%</b></li>
+    </ul>
+    <p class="note reveal">3% on every buy and sell, that's it. it gets split like this, and the dividends just show up in your wallet. no claiming, no staking, no galaxy brain moves. supply is still a placeholder until we post the final number.</p>
   </div>
 </section>
 
@@ -343,9 +366,10 @@ canvas#sparks{position:fixed;inset:0;pointer-events:none;z-index:90}
       <li class="reveal"><h3>get a wallet</h3><p>metamask or rabby, both fine. seed phrase goes on paper, not in your camera roll. we're begging you.</p></li>
       <li class="reveal"><h3>add arc</h3><p>add the arc network in your wallet or you're just staring at nothing.</p></li>
       <li class="reveal"><h3>grab some usdc</h3><p>gas on arc is paid in usdc, so bridge a little over first. don't be the guy stuck with 0 gas.</p></li>
-      <li class="reveal"><h3>ape $ARCNOLD</h3><p>copy the CA below, paste it into a dex on arc, swap. welcome to the gym.</p></li>
+      <li class="reveal"><h3>ape $ARCNOLD</h3><p>hit the buy button below or paste the CA into a dex on arc and swap. welcome to the gym.</p></li>
     </ol>
     <div class="ca ca-big reveal"><b>CA</b><code class="ca-full">0x71974347D2958c9f1e5cfaA2D998ef9BcBD1B021</code><button class="ca-copy">Copy</button></div>
+    <div class="hero-actions reveal" style="margin-top:16px"><a class="btn btn-gold" data-link="buy" href="https://dexscreener.com/arc/0x71974347d2958c9f1e5cfaa2d998ef9bcbd1b021" target="_blank" rel="noopener">Buy $ARCNOLD</a><a class="btn btn-glass" data-link="dex" href="https://dexscreener.com/arc/0x71974347d2958c9f1e5cfaa2d998ef9bcbd1b021" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l5-5 4 4 8-8"/><path d="M14 8h6v6"/></svg>Dexscreener</a></div>
     <p class="warn reveal">real talk: the only legit CA is the one on this site and on @arcnoldarc. anyone sliding into your DMs with a CA is a scammer. every. single. time.</p>
   </div>
 </section>
@@ -375,7 +399,9 @@ canvas#sparks{position:fixed;inset:0;pointer-events:none;z-index:90}
     <h2 class="reveal">get pumped</h2>
     <p class="lead reveal" style="margin-inline:auto">alpha drops on x first. follow or ngmi.</p>
     <div class="hero-actions reveal">
-      <a class="btn btn-gold" data-link="x" href="#" target="_blank" rel="noopener">Follow on X</a>
+      <a class="btn btn-gold" data-link="buy" href="https://dexscreener.com/arc/0x71974347d2958c9f1e5cfaa2d998ef9bcbd1b021" target="_blank" rel="noopener">Buy $ARCNOLD</a>
+      <a class="btn btn-glass" data-link="dex" href="https://dexscreener.com/arc/0x71974347d2958c9f1e5cfaa2d998ef9bcbd1b021" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l5-5 4 4 8-8"/><path d="M14 8h6v6"/></svg>Dexscreener</a>
+      <a class="btn btn-glass" data-link="x" href="#" target="_blank" rel="noopener">Follow on X</a>
     </div>
   </div>
 </section>
@@ -398,6 +424,7 @@ canvas#sparks{position:fixed;inset:0;pointer-events:none;z-index:90}
 const CONFIG = {
   ca: "0x71974347D2958c9f1e5cfaA2D998ef9BcBD1B021",
   x: "https://x.com/arcnoldarc",
+  dex: "https://dexscreener.com/arc/0x71974347d2958c9f1e5cfaa2d998ef9bcbd1b021",
   buyUrl: ""
 };
 
@@ -417,13 +444,13 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
 
 /* Links and CA */
+CONFIG.buy = CONFIG.buyUrl || CONFIG.dex;
 document.querySelectorAll("[data-link]").forEach(a => { a.href = CONFIG[a.dataset.link] || "#"; });
 if (CONFIG.ca) {
   const setCa = () => { $("#caText").textContent = innerWidth < 700 ? CONFIG.ca.slice(0,8) + "..." + CONFIG.ca.slice(-6) : CONFIG.ca; };
   setCa(); addEventListener("resize", setCa);
   document.querySelectorAll(".ca-full").forEach(c => c.textContent = CONFIG.ca);
   $("#caCopy").disabled = false;
-  if (CONFIG.buyUrl) { const b = $("#buyBtn"); b.href = CONFIG.buyUrl; b.target = "_blank"; b.rel = "noopener"; b.textContent = "Buy $ARCNOLD"; }
 }
 function toast(t){ const el=$("#toast"); el.textContent=t; el.classList.add("on"); clearTimeout(toast.t); toast.t=setTimeout(()=>el.classList.remove("on"),1600); }
 document.querySelectorAll(".ca-copy").forEach(btn => btn.addEventListener("click", async () => {
